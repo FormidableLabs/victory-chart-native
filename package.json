@@ -1,0 +1,32 @@
+{
+  "name": "victory-chart-native",
+  "version": "0.1.0",
+  "description": "Chart Component for Victory",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FormidableLabs/victory-chart-native.git"
+  },
+  "author": "Vakhtang Sidamonidze",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FormidableLabs/victory-chart-native/issues"
+  },
+  "homepage": "https://github.com/FormidableLabs/victory-chart-native#readme",
+  "scripts": {
+    "start": "./node_modules/react-native/packager/packager.sh start --reset-cache --projectRoots `pwd`,`pwd`/demo"
+  },
+  "dependencies": {
+    "react": "15.0.2",
+    "react-native-svg": "^2.1.0",
+    "victory-chart": "git+https://github.com/vakhtang/victory-chart.git#native",
+    "victory-core-native": "git+https://github.com/vakhtang/victory-core-native.git"
+  },
+  "devDependencies": {
+    "react-native": "^0.26.2"
+  }
+}
