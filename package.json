@@ -24,7 +24,7 @@
     "react": "15.0.2",
     "react-native-svg": "^2.1.0",
     "victory-chart": "git+https://github.com/vakhtang/victory-chart.git#native",
-    "victory-core-native": "git+https://github.com/vakhtang/victory-core-native.git"
+    "victory-core-native": "git+https://github.com/FormidableLabs/victory-core-native.git"
   },
   "devDependencies": {
     "react-native": "^0.26.2"
