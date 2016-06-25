@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "react": "^15.0.2",
-    "react-native": "^0.26.2"
+    "react": "^15.1.0",
+    "react-native": "^0.27.0"
   }
 }
