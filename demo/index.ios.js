@@ -18,6 +18,7 @@ import {
   VictoryArea,
   VictoryAxis,
   VictoryBar,
+  VictoryChart,
   VictoryGroup,
   VictoryLine,
   VictoryScatter,
@@ -75,6 +76,8 @@ class Demo extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        <VictoryChart/>
+
         <Text style={styles.text}>{"<VictoryLine />"}</Text>
         <VictoryLine />
         <VictoryLine
