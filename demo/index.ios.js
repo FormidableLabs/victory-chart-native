@@ -76,7 +76,7 @@ class Demo extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <VictoryChart/>
+        <VictoryChart><VictoryBar/><VictoryLine/></VictoryChart>
 
         <Text style={styles.text}>{"<VictoryLine />"}</Text>
         <VictoryLine />
