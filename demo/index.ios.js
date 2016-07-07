@@ -18,6 +18,7 @@ import {
   VictoryArea,
   VictoryAxis,
   VictoryBar,
+  VictoryChart,
   VictoryGroup,
   VictoryLine,
   VictoryScatter,
@@ -54,6 +55,7 @@ class Demo extends Component {
     const n = _.random(2, 7);
     return (data) => Math.exp(-n * data.x) * Math.sin(2 * n * Math.PI * data.x);
   }
+
   getStyles() {
     const colors = [
       "red", "orange", "magenta",
@@ -64,19 +66,140 @@ class Demo extends Component {
       strokeWidth: _.random(1, 5)
     };
   }
+
+  getTransitionData() {
+    const n = _.random(4, 10)
+    return _.range(n).map((i) => {
+      return {
+        x: i,
+        y: _.random(2, 10)
+      };
+    });
+  }
+
   componentDidMount() {
     setInterval(() => {
       this.setState({
         y: this.getYFunction(),
-        style: this.getStyles()
+        style: this.getStyles(),
+        transitionData: this.getTransitionData()
       });
     }, 3000);
   }
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        <Text style={styles.text}>{"<VictoryChart/>"}</Text>
+
+        <VictoryChart><VictoryBar/><VictoryLine/></VictoryChart>
+
+        <VictoryChart domain={{x: [0, 4]}}>
+          <VictoryGroup
+            labels={["a", "b", "c"]}
+            offset={10}
+            colorScale={"qualitative"}
+          >
+            <VictoryBar
+              data={[
+                {x: 1, y: 1},
+                {x: 2, y: 2},
+                {x: 3, y: 5}
+              ]}
+            />
+            <VictoryBar
+              data={[
+                {x: 1, y: 2},
+                {x: 2, y: 1},
+                {x: 3, y: 7}
+              ]}
+            />
+            <VictoryBar
+              data={[
+                {x: 1, y: 3},
+                {x: 2, y: 4},
+                {x: 3, y: 9}
+              ]}
+            />
+          </VictoryGroup>
+        </VictoryChart>
+
+        <VictoryChart>
+          <VictoryScatter
+            data={[
+              {
+                x: 1, y: 3, fill: "red",
+                symbol: "plus", size: 6, label: "WOW\nSTUFF"
+              },
+              {
+                x: 2, y: 5, fill: "magenta",
+                size: 9, opacity: 0.4, label: "WAT"
+              },
+              {
+                x: 3, y: 4, fill: "orange",
+                size: 5, label: "LABEL"
+              },
+              {
+                x: 4, y: 2, fill: "brown",
+                symbol: "square", size: 6, label: "OKAY"
+              },
+              {
+                x: 5, y: 5, fill: "black",
+                symbol: "triangleUp", size: 5, label: "GOOD"
+              }
+            ]}
+         />
+        </VictoryChart>
+
+        <VictoryChart animate={{duration: 1500}}>
+          <VictoryBar
+            data={this.state.transitionData}
+            style={{
+              data: {
+                fill: "tomato", width: 12
+              }
+            }}
+            animate={{
+              onExit: {
+                duration: 500,
+                before: () => ({
+                  y: 0,
+                  fill: "orange",
+                  label: "BYE"
+                })
+              }
+            }}
+          />
+        </VictoryChart>
+
+        <VictoryChart>
+          <VictoryStack>
+            <VictoryArea
+              data={[
+                {x: "a", y: 2}, {x: "b", y: 3}, {x: "c", y: 5}, {x: "d", y: 4}, {x: "e", y: 7}
+              ]}
+            />
+            <VictoryArea
+              data={[
+                {x: "a", y: 1}, {x: "b", y: 4}, {x: "c", y: 5}, {x: "d", y: 7}, {x: "e", y: 5}
+              ]}
+            />
+            <VictoryArea
+              data={[
+                {x: "a", y: 3}, {x: "b", y: 2}, {x: "c", y: 6}, {x: "d", y: 2}, {x: "e", y: 6}
+              ]}
+            />
+            <VictoryArea
+              data={[
+                {x: "a", y: 2}, {x: "b", y: 3}, {x: "c", y: 3}, {x: "d", y: 4}, {x: "e", y: 7}
+              ]}
+            />
+          </VictoryStack>
+        </VictoryChart>
+
         <Text style={styles.text}>{"<VictoryLine />"}</Text>
+
         <VictoryLine />
+
         <VictoryLine
           data={[
             {x: 0, y: 1},
@@ -87,6 +210,7 @@ class Demo extends Component {
             {x: 5, y: 5}
           ]}
         />
+
         <VictoryLine
           data={[
             {amount: 1, yield: 1, error: 0.5},
@@ -98,7 +222,9 @@ class Demo extends Component {
           x={"amount"}
           y={(data) => (data.yield + data.error)}
         />
+
         <VictoryLine y={(data) => Math.sin(2 * Math.PI * data.x)} />
+
         <VictoryLine
           height={300}
           domain={[0, 5]}
@@ -121,6 +247,7 @@ class Demo extends Component {
             labels: {fontSize: 12}
           }}
         />
+
         <VictoryLine
           width={300}
           style={{
@@ -141,6 +268,7 @@ class Demo extends Component {
             {x: 5, y: 5}
           ]}
         />
+
         <VictoryLine
           style={{
             data: {stroke: "red", strokeWidth: 9}
@@ -155,6 +283,7 @@ class Demo extends Component {
             {x: 5, y: 5}
           ]}
         />
+
         <VictoryLine
           style={{data: this.state.style}}
           interpolation="basis"
@@ -163,7 +292,9 @@ class Demo extends Component {
         />
 
         <Text style={styles.text}>{"<VictoryArea />"}</Text>
+
         <VictoryArea />
+
         <VictoryArea
           data={[
             {x: 1, y: 1},
@@ -175,6 +306,7 @@ class Demo extends Component {
             {x: 7, y: 2}
           ]}
         />
+
         <VictoryArea
           data={[
             {amount: 1, yield: 1, error: 0.5},
@@ -186,6 +318,7 @@ class Demo extends Component {
           x={"amount"}
           y={(data) => (data.yield + data.error)}
         />
+
         <VictoryGroup
           width={300}
           height={375}
@@ -213,6 +346,7 @@ class Demo extends Component {
             ]}
           />
         </VictoryGroup>
+
         <VictoryStack
           width={300}
           height={375}
@@ -239,6 +373,7 @@ class Demo extends Component {
             ]}
           />
         </VictoryStack>
+
         <VictoryStack
           width={300}
           height={450}
@@ -281,7 +416,9 @@ class Demo extends Component {
         </VictoryStack>
 
         <Text style={styles.text}>{"<VictoryBar />"}</Text>
+
         <VictoryBar />
+
         <VictoryBar
           data={[
             {x: 1, y: 1},
@@ -291,6 +428,7 @@ class Demo extends Component {
             {x: 5, y: 1}
           ]}
         />
+
         <VictoryGroup
           width={300}
           height={375}
@@ -319,6 +457,7 @@ class Demo extends Component {
             ]}
           />
         </VictoryGroup>
+
         <VictoryStack
           width={300}
           height={375}
@@ -346,6 +485,7 @@ class Demo extends Component {
             ]}
           />
         </VictoryStack>
+
         <VictoryBar
           height={375}
           padding={75}
@@ -364,12 +504,15 @@ class Demo extends Component {
         />
 
         <Text style={styles.text}>{"<VictoryScatter />"}</Text>
+
         <VictoryScatter />
+
         <VictoryScatter
           y={(data) =>
             Math.sin(2 * Math.PI * data.x)
           }
         />
+
         <VictoryScatter
           data={[
             {x: 1, y: 3},
@@ -388,6 +531,7 @@ class Demo extends Component {
             }
           }}
         />
+
         <VictoryScatter
           style={{
             data: {
@@ -403,7 +547,9 @@ class Demo extends Component {
         />
 
         <Text style={styles.text}>{"<VictoryAxis />"}</Text>
+
         <VictoryAxis height={100} />
+
         <VictoryAxis
           height={100}
           scale="time"
@@ -416,6 +562,7 @@ class Demo extends Component {
           ]}
           tickFormat={(x) => x.getFullYear()}
         />
+
         <Svg width={320} height={320}>
           <VictoryAxis
             width={320}
@@ -432,6 +579,7 @@ class Demo extends Component {
             offsetX={160}
             standalone={false}/>
         </Svg>
+
         <VictoryAxis
           dependentAxis
           padding={{left: 50, top: 20, bottom: 20}}
