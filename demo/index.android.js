@@ -20,7 +20,8 @@ import {
   VictoryGroup,
   VictoryLine,
   VictoryScatter,
-  VictoryStack
+  VictoryStack,
+  VictoryErrorBar
 } from "../lib";
 
 const styles = StyleSheet.create({
@@ -436,6 +437,21 @@ class Demo extends Component {
           padding={{left: 50, top: 20, bottom: 20}}
           scale="log"
           domain={[1, 5]}
+        />
+      
+        <Text style={styles.text}>{"<VictoryErrorBar />"}</Text>
+
+        <VictoryErrorBar
+          style={{
+            data: {stroke: "red", strokeWidth: 2}
+          }}
+          data={[
+            {x: 1, y: 1, errorX: [1, 0.5], errorY: .1},
+            {x: 2, y: 2, errorX: [1, 3], errorY: .1},
+            {x: 3, y: 3, errorX: [1, 3], errorY: [.2, .3]},
+            {x: 4, y: 2, errorX: [1, 0.5], errorY: .1},
+            {x: 5, y: 1, errorX: [1, 0.5], errorY: .2}
+          ]}
         />
       </ScrollView>
     );

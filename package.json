@@ -20,13 +20,13 @@
   "scripts": {
     "start": "./node_modules/react-native/packager/packager.sh start --reset-cache --projectRoots `pwd`,`pwd`/demo"
   },
+  "peerDependencies": {
+    "react-native": ">=0.27.0"
+  },
   "dependencies": {
     "react": "~15.1.0",
     "react-native-svg": "^2.2.0",
     "victory-core-native": "^0.1.5",
     "victory-chart": "git+https://github.com/FormidableLabs/victory-chart.git#feature/error-bar"
-  },
-  "devDependencies": {
-    "react-native": "~0.29.0"
   }
 }
