@@ -20,7 +20,7 @@
   "scripts": {
     "start": "./node_modules/react-native/packager/packager.sh start --reset-cache --projectRoots `pwd`,`pwd`/demo"
   },
-  "peerDependencies": {
+  "devDependencies": {
     "react-native": ">=0.27.0"
   },
   "dependencies": {
