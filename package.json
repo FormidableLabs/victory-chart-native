@@ -20,13 +20,13 @@
   "scripts": {
     "start": "./node_modules/react-native/packager/packager.sh start --reset-cache --projectRoots `pwd`,`pwd`/demo"
   },
+  "devDependencies": {
+    "react-native": ">=0.27.0"
+  },
   "dependencies": {
     "react": "~15.1.0",
     "react-native-svg": "^2.2.0",
     "victory-core-native": "^0.1.5",
-    "victory-chart": "^10.0.0"
-  },
-  "devDependencies": {
-    "react-native": "~0.27.0"
+    "victory-chart": "^10.1.0"
   }
 }
