@@ -27,6 +27,6 @@
     "react": "~15.1.0",
     "react-native-svg": "^2.2.0",
     "victory-core-native": "^0.1.5",
-    "victory-chart": "git+https://github.com/FormidableLabs/victory-chart.git#feature/error-bar"
+    "victory-chart": "^10.1.0"
   }
 }
