@@ -1,7 +1,10 @@
 var fs = require("fs");
 var babel = require("babel-core");
-var mockery = require("mockery");
 var origJs = require.extensions[".js"];
+
+// Mock react-native and react-native-svg
+require("react-native-mock/mock");
+require("react-native-svg-mock/mock");
 
 // Compile a path with babel
 var compile = function (fileName) {
@@ -31,10 +34,3 @@ require.extensions[".js"] = function (module, fileName) {
   }
   return origJs(module, fileName);
 };
-
-// Mock react-native
-require("react-native-mock/mock");
-
-// Custom mock for react-native-svg
-mockery.enable({ warnOnUnregistered: false });
-mockery.registerMock("react-native-svg", require("./react-native-svg-mock"));

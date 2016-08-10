@@ -34,11 +34,11 @@
     "eslint-plugin-filenames": "^0.2.0",
     "eslint-plugin-react": "^3.12.0",
     "mocha": "^3.0.1",
-    "mockery": "^1.7.0",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-native": ">=0.29.0",
-    "react-native-mock": "^0.2.5"
+    "react-native-mock": "^0.2.5",
+    "react-native-svg-mock": "^1.0.2"
   },
   "dependencies": {
     "react": "^15.3.0",
