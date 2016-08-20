@@ -22,7 +22,7 @@ import {
   VictoryScatter,
   VictoryStack,
   VictoryErrorBar
-} from "../lib";
+} from "victory-chart-native";
 
 const styles = StyleSheet.create({
   container: {
