@@ -3,7 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "react": "^15.1.0",
-    "react-native": "^0.29.0"
+    "fs-extra": "^0.30.0",
+    "react": "^15.2.1",
+    "react-native": "^0.31.0",
+    "react-native-svg": "^4.1.3",
+    "victory-chart-native": "^0.2.0"
+  },
+  "scripts": {
+    "start": "./node_modules/react-native/packager/packager.sh start --reset-cache",
+    "postinstall": "node update.js",
+    "pull-local-changes": "node update.js"
   }
 }

@@ -1,6 +1,7 @@
 # Victory Chart Native
 
 ```sh
+$ cd demo
 $ npm install
 $ npm start
 ```

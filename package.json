@@ -42,8 +42,10 @@
   },
   "dependencies": {
     "react": "^15.3.0",
-    "react-native-svg": "^3.1.1",
     "victory-chart": "^10.1.0",
     "victory-core-native": "^0.2.1"
+  },
+  "peerDependencies": {
+    "react-native-svg": "*"
   }
 }
