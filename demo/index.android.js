@@ -4,7 +4,8 @@
  * https://github.com/facebook/react-native
  */
 
-import _ from "lodash";
+import random from "lodash.random"
+import range from "lodash.range"
 import React, { Component } from "react";
 import {
   AppRegistry,
@@ -51,7 +52,7 @@ class Demo extends Component {
     };
   }
   getYFunction() {
-    const n = _.random(2, 7);
+    const n = random(2, 7);
     return (data) => Math.exp(-n * data.x) * Math.sin(2 * n * Math.PI * data.x);
   }
   getStyles() {
@@ -60,8 +61,8 @@ class Demo extends Component {
       "gold", "blue", "purple"
     ];
     return {
-      stroke: colors[_.random(0, 5)],
-      strokeWidth: _.random(1, 5)
+      stroke: colors[random(0, 5)],
+      strokeWidth: random(1, 5)
     };
   }
   componentDidMount() {
@@ -438,7 +439,7 @@ class Demo extends Component {
           scale="log"
           domain={[1, 5]}
         />
-      
+
         <Text style={styles.text}>{"<VictoryErrorBar />"}</Text>
 
         <VictoryErrorBar
