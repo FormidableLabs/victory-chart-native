@@ -2,16 +2,16 @@ import React from "react-native";
 import { render } from "enzyme";
 import { expect } from "chai";
 
-import VictoryArea from "../../lib/components/victory-area/victory-area";
-import VictoryAxis from "../../lib/components/victory-axis/victory-axis";
-import VictoryBar from "../../lib/components/victory-bar/victory-bar";
-import VictoryGroup from "../../lib/components/victory-group/victory-group";
-import VictoryLine from "../../lib/components/victory-line/victory-line";
-import VictoryScatter from "../../lib/components/victory-scatter/victory-scatter";
-import VictoryStack from "../../lib/components/victory-stack/victory-stack";
-import VictoryChart from "../../lib/components/victory-chart/victory-chart";
-import VictoryErrorBar from "../../lib/components/victory-errorbar/victory-errorbar";
-import VictoryCandlestick from "../../lib/components/victory-candlestick/victory-candlestick";
+import VictoryArea from "../../lib/components/victory-area";
+import VictoryAxis from "../../lib/components/victory-axis";
+import VictoryBar from "../../lib/components/victory-bar";
+import VictoryGroup from "../../lib/components/victory-group";
+import VictoryLine from "../../lib/components/victory-line";
+import VictoryScatter from "../../lib/components/victory-scatter";
+import VictoryStack from "../../lib/components/victory-stack";
+import VictoryChart from "../../lib/components/victory-chart";
+import VictoryErrorBar from "../../lib/components/victory-errorbar";
+import VictoryCandlestick from "../../lib/components/victory-candlestick";
 
 const components = [
   { component: VictoryArea, name: "VictoryArea" },
