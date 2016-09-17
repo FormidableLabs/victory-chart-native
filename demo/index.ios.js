@@ -27,6 +27,8 @@ import {
   VictoryErrorBar
 } from "../lib";
 
+import { VictoryTooltip } from "victory-core";
+
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -104,7 +106,30 @@ class Demo extends Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.text}>{"<VictoryChart/>"}</Text>
 
-        <VictoryChart><VictoryBar/><VictoryLine/></VictoryChart>
+        <VictoryChart>
+          <VictoryBar
+            events={[{
+              target: "data",
+              eventHandlers: {
+                onPressIn: () => {
+                  return [
+                    {
+                      mutation: () => {
+                        return {style: {fill: "orange", width: 10}};
+                      }
+                    }, {
+                      target: "labels",
+                      mutation: () => {
+                        return {text: "hey"};
+                      }
+                    }
+                  ];
+                }
+              }
+            }]}
+          />
+          <VictoryLine/>
+        </VictoryChart>
 
         <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
 
@@ -140,6 +165,7 @@ class Demo extends Component {
 
         <VictoryChart>
           <VictoryScatter
+            labelComponent={<VictoryTooltip/>}
             data={[
               {
                 x: 1, y: 3, fill: "red",
