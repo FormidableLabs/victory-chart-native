@@ -12,6 +12,8 @@ import VictoryStack from "../../lib/components/victory-stack";
 import VictoryChart from "../../lib/components/victory-chart";
 import VictoryErrorBar from "../../lib/components/victory-errorbar";
 import VictoryCandlestick from "../../lib/components/victory-candlestick";
+import VictoryVoronoi from "../../lib/components/victory-voronoi";
+import VictoryVoronoiTooltip from "../../lib/components/victory-voronoi-tooltip";
 
 const components = [
   { component: VictoryArea, name: "VictoryArea" },
@@ -23,7 +25,9 @@ const components = [
   { component: VictoryStack, name: "VictoryStack" },
   { component: VictoryChart, name: "VictoryChart" },
   { component: VictoryErrorBar, name: "VictoryErrorBar" },
-  { component: VictoryCandlestick, name: "VictoryCandlestick" }
+  { component: VictoryCandlestick, name: "VictoryCandlestick" },
+  { component: VictoryVoronoi, name: "VictoryVoronoi" },
+  { component: VictoryVoronoiTooltip, name: "VictoryVoronoiTooltip" }
 ];
 
 describe("Default render", () => {
