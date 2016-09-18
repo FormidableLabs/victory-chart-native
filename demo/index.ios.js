@@ -28,7 +28,7 @@ import {
   VictoryVoronoiTooltip
 } from "../lib";
 
-import { VictoryTooltip } from "victory-core";
+import { VictoryTooltip } from "victory-core-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -129,28 +129,7 @@ class Demo extends Component {
 
         <VictoryChart>
           <VictoryScatter
-            labelComponent={<VictoryTooltip/>}
-            events={[{
-              target: "data",
-              eventHandlers: {
-                onPressIn: () => {
-                  return {
-                    target: "labels",
-                    mutation: () => {
-                      return { active: true };
-                    }
-                  };
-                },
-                onPressOut: () => {
-                  return {
-                    target: "labels",
-                    mutation: () => {
-                      return { active: false };
-                    }
-                  };
-                }
-              }
-            }]}
+            labelComponent={<VictoryTooltip active={true}/>}
             data={[
               {
                 x: 1, y: 3, fill: "red",

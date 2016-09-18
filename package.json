@@ -49,6 +49,6 @@
   "dependencies": {
     "react": "^15.3.0",
     "victory-chart": "^12.0.1",
-    "victory-core-native": "git+https://github.com/FormidableLabs/victory-core-native#feature/tooltip"
+    "victory-core-native": "^2.1.0"
   }
 }
