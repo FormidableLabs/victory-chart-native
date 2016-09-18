@@ -24,8 +24,11 @@ import {
   VictoryLine,
   VictoryScatter,
   VictoryStack,
-  VictoryErrorBar
+  VictoryErrorBar,
+  VictoryVoronoiTooltip
 } from "../lib";
+
+import { VictoryTooltip } from "victory-core-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -104,6 +107,25 @@ class Demo extends Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.text}>{"<VictoryChart/>"}</Text>
 
+        <VictoryChart
+          domain={{y: [-25, 25]}}
+        >
+          <VictoryGroup
+            data={
+              range(10).map((i) => {
+                return {
+                  x: i,
+                  y: random(-20, 20)
+                };
+              })
+            }
+          >
+            <VictoryLine/>
+            <VictoryVoronoiTooltip
+              labels={(d) => `x: ${d.x} \n y: ${d.y}`}
+            />
+          </VictoryGroup>
+        </VictoryChart>
         <VictoryChart><VictoryBar/><VictoryLine/></VictoryChart>
 
         <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
@@ -140,6 +162,7 @@ class Demo extends Component {
 
         <VictoryChart>
           <VictoryScatter
+            labelComponent={<VictoryTooltip/>}
             data={[
               {
                 x: 1, y: 3, fill: "red",
