@@ -126,10 +126,43 @@ class Demo extends Component {
             />
           </VictoryGroup>
         </VictoryChart>
+        <VictoryChart><VictoryBar/><VictoryLine/></VictoryChart>
+
+        <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
+
+        <VictoryChart domain={{x: [0, 4]}}>
+          <VictoryGroup
+            labels={["a", "b", "c"]}
+            offset={10}
+            colorScale={"qualitative"}
+          >
+            <VictoryBar
+              data={[
+                {x: 1, y: 1},
+                {x: 2, y: 2},
+                {x: 3, y: 5}
+              ]}
+            />
+            <VictoryBar
+              data={[
+                {x: 1, y: 2},
+                {x: 2, y: 1},
+                {x: 3, y: 7}
+              ]}
+            />
+            <VictoryBar
+              data={[
+                {x: 1, y: 3},
+                {x: 2, y: 4},
+                {x: 3, y: 9}
+              ]}
+            />
+          </VictoryGroup>
+        </VictoryChart>
 
         <VictoryChart>
           <VictoryScatter
-            labelComponent={<VictoryTooltip active={true}/>}
+            labelComponent={<VictoryTooltip/>}
             data={[
               {
                 x: 1, y: 3, fill: "red",
