@@ -1,5 +1,10 @@
 # VictoryChartNative Changelog
 
+## 1.1.0 (2016-09-18)
+
+- Adds VictoryVoronoi
+- Adds VictoryVoronoiTooltip
+
 ## 1.0.0 (2016-08-22)
 
 - **Moves `react-native-svg` to `peerDependencies`**
