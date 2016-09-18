@@ -24,7 +24,8 @@ import {
   VictoryLine,
   VictoryScatter,
   VictoryStack,
-  VictoryErrorBar
+  VictoryErrorBar,
+  VictoryVoronoiTooltip
 } from "../lib";
 
 import { VictoryTooltip } from "victory-core";
@@ -106,59 +107,22 @@ class Demo extends Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.text}>{"<VictoryChart/>"}</Text>
 
-        <VictoryChart>
-          <VictoryBar
-            events={[{
-              target: "data",
-              eventHandlers: {
-                onPressIn: () => {
-                  return [
-                    {
-                      mutation: () => {
-                        return {style: {fill: "orange", width: 10}};
-                      }
-                    }, {
-                      target: "labels",
-                      mutation: () => {
-                        return {text: "hey"};
-                      }
-                    }
-                  ];
-                }
-              }
-            }]}
-          />
-          <VictoryLine/>
-        </VictoryChart>
-
-        <VictoryChart><VictoryCandlestick data={candleData}/></VictoryChart>
-
-        <VictoryChart domain={{x: [0, 4]}}>
+        <VictoryChart
+          domain={{y: [-25, 25]}}
+        >
           <VictoryGroup
-            labels={["a", "b", "c"]}
-            offset={10}
-            colorScale={"qualitative"}
+            data={
+              range(10).map((i) => {
+                return {
+                  x: i,
+                  y: random(-20, 20)
+                };
+              })
+            }
           >
-            <VictoryBar
-              data={[
-                {x: 1, y: 1},
-                {x: 2, y: 2},
-                {x: 3, y: 5}
-              ]}
-            />
-            <VictoryBar
-              data={[
-                {x: 1, y: 2},
-                {x: 2, y: 1},
-                {x: 3, y: 7}
-              ]}
-            />
-            <VictoryBar
-              data={[
-                {x: 1, y: 3},
-                {x: 2, y: 4},
-                {x: 3, y: 9}
-              ]}
+            <VictoryLine/>
+            <VictoryVoronoiTooltip
+              labels={(d) => `x: ${d.x} \n y: ${d.y}`}
             />
           </VictoryGroup>
         </VictoryChart>
@@ -166,6 +130,27 @@ class Demo extends Component {
         <VictoryChart>
           <VictoryScatter
             labelComponent={<VictoryTooltip/>}
+            events={[{
+              target: "data",
+              eventHandlers: {
+                onPressIn: () => {
+                  return {
+                    target: "labels",
+                    mutation: () => {
+                      return { active: true };
+                    }
+                  };
+                },
+                onPressOut: () => {
+                  return {
+                    target: "labels",
+                    mutation: () => {
+                      return { active: false };
+                    }
+                  };
+                }
+              }
+            }]}
             data={[
               {
                 x: 1, y: 3, fill: "red",
