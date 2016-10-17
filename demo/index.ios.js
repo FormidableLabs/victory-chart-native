@@ -188,7 +188,7 @@ class Demo extends Component {
          />
         </VictoryChart>
 
-        <VictoryChart animate={{duration: 1500}}>
+        <VictoryChart animate={{duration: 500}}>
           <VictoryBar
             data={this.state.transitionData}
             style={{
@@ -325,7 +325,6 @@ class Demo extends Component {
         <VictoryLine
           style={{data: this.state.style}}
           interpolation="basis"
-          animate={{duration: 1500}}
           y={this.state.y}
         />
 

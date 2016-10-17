@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "react": "^15.3.0",
-    "victory-chart": "^12.0.1",
-    "victory-core-native": "^2.1.0"
+    "victory-chart": "git+https://github.com/FormidableLabs/victory-chart#tweak-for-native",
+    "victory-core-native": "git+https://github.com/FormidableLabs/victory-core-native#update-for-0.13"
   }
 }
