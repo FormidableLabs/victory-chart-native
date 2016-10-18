@@ -38,7 +38,7 @@
     "mocha": "^3.0.1",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
-    "react-native": "~0.33.0",
+    "react-native": "~0.35.0",
     "react-native-mock": "^0.2.5",
     "react-native-svg": "^4.3.0",
     "react-native-svg-mock": "^1.0.2"
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "react": "^15.3.0",
-    "victory-chart": "git+https://github.com/FormidableLabs/victory-chart#tweak-for-native",
-    "victory-core-native": "git+https://github.com/FormidableLabs/victory-core-native#update-for-0.13"
+    "victory-chart": "^13.0.1",
+    "victory-core-native": "^3.0.0"
   }
 }
