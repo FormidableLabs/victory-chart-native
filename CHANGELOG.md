@@ -1,5 +1,11 @@
 # VictoryChartNative Changelog
 
+
+## 1.2.0 (2016-10-18)
+
+- Adds support for VictoryPortal
+- Adds VictoryClipContainer for VictoryArea and VictoryLine
+
 ## 1.1.0 (2016-09-18)
 
 - Adds VictoryVoronoi
