@@ -64,7 +64,8 @@ class Demo extends Component {
     super(props);
     this.state = {
       y: this.getYFunction(),
-      style: this.getStyles()
+      style: this.getStyles(),
+      transitionData: this.getTransitionData()
     };
   }
   getYFunction() {
@@ -84,7 +85,7 @@ class Demo extends Component {
   }
 
   getTransitionData() {
-    const n = random(4, 10)
+    const n = random(4, 10);
     return range(n).map((i) => {
       return {
         x: i,
@@ -185,10 +186,10 @@ class Demo extends Component {
                 symbol: "triangleUp", size: 5, label: "GOOD"
               }
             ]}
-         />
+          />
         </VictoryChart>
 
-        <VictoryChart animate={{duration: 1500}}>
+        <VictoryChart animate={{duration: 500}}>
           <VictoryBar
             data={this.state.transitionData}
             style={{
@@ -312,20 +313,13 @@ class Demo extends Component {
             data: {stroke: "red", strokeWidth: 9}
           }}
           interpolation={"linear"}
-          data={[
-            {x: 0, y: 1},
-            {x: 1, y: 3},
-            {x: 2, y: 2},
-            {x: 3, y: 4},
-            {x: 4, y: 3},
-            {x: 5, y: 5}
-          ]}
+          // animate={{duration: 1000}}
+          data={this.state.transitionData}
         />
 
         <VictoryLine
           style={{data: this.state.style}}
           interpolation="basis"
-          animate={{duration: 1500}}
           y={this.state.y}
         />
 
