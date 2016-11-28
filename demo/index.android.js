@@ -173,7 +173,9 @@ class Demo extends Component {
           style={{data: this.state.style}}
           interpolation="basis"
           animate={{duration: 1500}}
-          y={this.state.y}
+          data={range(100).map((x) => x / 100).map((x) => ({
+            x, y: this.state.y({x})
+          }))}
         />
 
         <Text style={styles.text}>{"<VictoryArea />"}</Text>
