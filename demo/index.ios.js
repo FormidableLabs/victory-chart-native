@@ -1,8 +1,8 @@
 /* global setInterval */
+/* eslint-disable no-magic-numbers */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * @flow
  */
 import random from "lodash.random";
 import range from "lodash.range";
@@ -25,7 +25,8 @@ import {
   VictoryScatter,
   VictoryStack,
   VictoryErrorBar,
-  VictoryVoronoiTooltip
+  VictoryVoronoiTooltip,
+  VictoryZoom
 } from "../lib";
 
 import { VictoryTooltip } from "victory-core-native";
@@ -65,6 +66,7 @@ class Demo extends Component {
     this.state = {
       y: this.getYFunction(),
       style: this.getStyles(),
+      staticData: this.getStaticData(),
       transitionData: this.getTransitionData()
     };
   }
@@ -94,6 +96,16 @@ class Demo extends Component {
     });
   }
 
+  getStaticData() {
+    const n = 100;
+    return range(n).map((i) => {
+      return {
+        x: i,
+        y: i < n / 2 ? random(0, 100) : random(100, 200)
+      };
+    });
+  }
+
   componentDidMount() {
     setInterval(() => {
       this.setState({
@@ -106,6 +118,7 @@ class Demo extends Component {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
+
         <Text style={styles.text}>{"<VictoryChart/>"}</Text>
 
         <VictoryChart
@@ -234,6 +247,45 @@ class Demo extends Component {
             />
           </VictoryStack>
         </VictoryChart>
+
+        <Text style={styles.text}>{"<VictoryZoom/>"}</Text>
+
+        <VictoryZoom>
+          <VictoryChart>
+            <VictoryGroup data={this.state.staticData}>
+              <VictoryLine/>
+            </VictoryGroup>
+          </VictoryChart>
+        </VictoryZoom>
+
+        <VictoryZoom zoomDomain={{x: [10, 20]}}>
+          <VictoryChart>
+            <VictoryLine
+              interpolation="basis"
+              animate={{duration: 1000}}
+              data={
+                range(30).map((x) => ({
+                  x, y: Math.min(Math.max(0, x + random(-2, 2)), 30)
+                }))
+              }
+              style={{
+                data: {stroke: "red", strokeWidth: 2}
+              }}
+            />
+            <VictoryLine
+              interpolation="basis"
+              animate={{duration: 1000}}
+              data={
+                range(30).map((x) => ({
+                  x, y: Math.min(Math.max(0, x + random(-10, 10)), 30)
+                }))
+              }
+              style={{
+                data: {stroke: "yellow", strokeWidth: 2}
+              }}
+            />
+          </VictoryChart>
+        </VictoryZoom>
 
         <Text style={styles.text}>{"<VictoryLine />"}</Text>
 
