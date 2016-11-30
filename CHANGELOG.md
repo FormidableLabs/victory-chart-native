@@ -1,5 +1,8 @@
 # VictoryChartNative Changelog
 
+## 1.3.0 (2016-11-29)
+
+- Adds support for VictoryZoom
 
 ## 1.2.0 (2016-10-18)
 
@@ -27,7 +30,7 @@
 ## 0.1.0 (2016-07-07)
 
 - Initial working version
-- Known issues: 
+- Known issues:
   - Transitions are not working perfectly
   - Events are not supported
   - Poor Android support
