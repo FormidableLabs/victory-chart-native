@@ -1,4 +1,5 @@
 /* global setInterval */
+/* eslint-disable no-magic-numbers */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -22,7 +23,9 @@ import {
   VictoryLine,
   VictoryScatter,
   VictoryStack,
-  VictoryErrorBar
+  VictoryErrorBar,
+  VictoryChart,
+  VictoryZoom
 } from "../lib";
 
 const styles = StyleSheet.create({
@@ -48,7 +51,8 @@ class Demo extends Component {
     super(props);
     this.state = {
       y: this.getYFunction(),
-      style: this.getStyles()
+      style: this.getStyles(),
+      staticData: this.getStaticData()
     };
   }
   getYFunction() {
@@ -64,6 +68,15 @@ class Demo extends Component {
       stroke: colors[random(0, 5)],
       strokeWidth: random(1, 5)
     };
+  }
+  getStaticData() {
+    const n = 100;
+    return range(n).map((i) => {
+      return {
+        x: i,
+        y: i < n / 2 ? random(0, 100) : random(100, 200)
+      };
+    });
   }
   componentDidMount() {
     setInterval(() => {
@@ -160,7 +173,9 @@ class Demo extends Component {
           style={{data: this.state.style}}
           interpolation="basis"
           animate={{duration: 1500}}
-          y={this.state.y}
+          data={range(100).map((x) => x / 100).map((x) => ({
+            x, y: this.state.y({x})
+          }))}
         />
 
         <Text style={styles.text}>{"<VictoryArea />"}</Text>
@@ -454,6 +469,14 @@ class Demo extends Component {
             {x: 5, y: 1, errorX: [1, 0.5], errorY: .2}
           ]}
         />
+        <Text style={styles.text}>{"<VictoryZoom/>"}</Text>
+        <VictoryZoom zoomDomain={{x: [25, 75]}}>
+          <VictoryChart>
+            <VictoryGroup data={this.state.staticData}>
+              <VictoryLine/>
+            </VictoryGroup>
+          </VictoryChart>
+        </VictoryZoom>
       </ScrollView>
     );
   }
