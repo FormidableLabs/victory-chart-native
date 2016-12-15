@@ -1,5 +1,10 @@
 # VictoryChartNative Changelog
 
+## 2.0.0 (2016-12-15)
+
+- Changes how transitions and animations operate for continuous data
+- Moves react and react-native to peerDependencies
+
 ## 1.3.0 (2016-11-29)
 
 - Adds support for VictoryZoom
